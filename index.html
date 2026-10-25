@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>江戸川区・造園職 二次面接対策</title>
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --navy-primary: #1b2a4a;
+      --navy-dark: #0f172a;
+      --navy-light: #2d4373;
+      --accent-blue: #2563eb;
+      --text-main: #1e293b;
+      --text-sub: #475569;
+      --point-bg: #eff6ff;
+      --point-border: #3b82f6;
+      --point-text: #1e40af;
+      --border-color: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      max-width: 500px;
+      margin: 0 auto;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+
+    /* ヘッダー */
+    header {
+      background-color: var(--navy-primary);
+      color: #ffffff;
+      padding: 16px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    header p {
+      font-size: 0.75rem;
+      color: #cbd5e1;
+      margin-top: 2px;
+    }
+
+    /* メインコンテンツ */
+    main {
+      flex: 1;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-bottom: 90px; /* 下部ナビゲーションの余白 */
+    }
+
+    /* フィルター・コントロール */
+    .controls {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .select-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .select-group label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-sub);
+    }
+
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background-color: #fff;
+      color: var(--text-main);
+      outline: none;
+    }
+
+    .mode-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 4px;
+    }
+
+    .mode-toggle span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* トグルスイッチ */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 46px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: .3s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--navy-primary);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+
+    /* プログレスバー・カウンター */
+    .progress-bar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy-primary);
+      padding: 0 4px;
+    }
+
+    .category-tag {
+      background: #e2e8f0;
+      color: var(--navy-primary);
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    /* 質問カード */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    .question-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .question-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--navy-dark);
+    }
+
+    /* アクションボタン */
+    .btn-toggle-answer {
+      background-color: var(--navy-primary);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      transition: background-color 0.2s;
+    }
+
+    .btn-toggle-answer:active {
+      background-color: var(--navy-dark);
+    }
+
+    /* 回答・練習ポイント領域 */
+    .answer-container {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    .answer-container.visible {
+      display: flex;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--navy-primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .answer-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-main);
+      background-color: #f8fafc;
+      padding: 12px;
+      border-radius: 8px;
+      border-left: 4px solid var(--navy-primary);
+    }
+
+    .point-box {
+      background-color: var(--point-bg);
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid var(--point-border);
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .point-text {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--point-text);
+      font-weight: 600;
+    }
+
+    /* 練習方法アコーディオン */
+    .guide-card {
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+
+    .guide-card summary {
+      font-weight: 700;
+      color: var(--navy-primary);
+      cursor: pointer;
+    }
+
+    .guide-card ol {
+      margin-top: 8px;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* 固定フッターナビゲーション */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 500px;
+      background: var(--card-bg);
+      border-top: 1px solid var(--border-color);
+      padding: 12px 16px;
+      display: flex;
+      gap: 12px;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+      z-index: 20;
+    }
+
+    .nav-btn {
+      flex: 1;
+      padding: 12px 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 10px;
+      border: 1px solid var(--navy-primary);
+      background-color: #ffffff;
+      color: var(--navy-primary);
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .nav-btn:disabled {
+      border-color: #cbd5e1;
+      color: #94a3b8;
+      cursor: not-allowed;
+    }
+
+    .nav-btn.primary {
+      background-color: var(--navy-primary);
+      color: #ffffff;
+    }
+
+    .nav-btn:not(:disabled):active {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>江戸川区・造園職 二次面接対策</h1>
+    <p>防衛省土木職（調整業務5年）特化型 一問一答トレ</p>
+  </header>
+
+  <main>
+    <!-- カテゴリ＆モード選択 -->
+    <div class="controls">
+      <div class="select-group">
+        <label for="categorySelect">練習カテゴリ</label>
+        <select id="categorySelect" onchange="onCategoryChange()">
+          <option value="all">全カテゴリ (全15問)</option>
+          <option value="1">第1部：転職理由 (5問)</option>
+          <option value="2">第2部：志望動機・区政理解 (5問)</option>
+          <option value="3">第3部：調整業務・実務対応力 (5問)</option>
+        </select>
+      </div>
+
+      <div class="mode-toggle">
+        <span>ランダム出題モード</span>
+        <label class="switch">
+          <input type="checkbox" id="randomToggle" onchange="onRandomToggle()">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- カウンター -->
+    <div class="progress-bar-container">
+      <span class="category-tag" id="categoryTag">第1部：転職理由</span>
+      <span id="counterText">質問 1 / 15</span>
+    </div>
+
+    <!-- 質問カード -->
+    <div class="card">
+      <div class="question-title" id="questionNumber">質問 1</div>
+      <div class="question-text" id="questionText">読み込み中...</div>
+
+      <button class="btn-toggle-answer" id="toggleAnswerBtn" onclick="toggleAnswer()">
+        回答例を表示
+      </button>
+
+      <!-- 回答例＆練習ポイント（初期は非表示） -->
+      <div class="answer-container" id="answerContainer">
+        <div>
+          <div class="section-label">💡 回答例</div>
+          <div class="answer-text" id="answerText"></div>
+        </div>
+
+        <div class="point-box">
+          <div class="section-label" style="color: var(--point-text);">📌 練習ポイント</div>
+          <div class="point-text" id="pointText"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 練習ガイド -->
+    <details class="guide-card">
+      <summary>効率的な練習方法（タップで開く）</summary>
+      <ol>
+        <li>質問だけを見て、自分の言葉で30〜60秒回答する。</li>
+        <li>「回答例を表示」を押して足りない要素を確認する。</li>
+        <li>回答例を隠して、もう一度回答してみる。</li>
+      </ol>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #64748b;">※丸暗記ではなく、防衛省での具体的な体験談を交える骨組みを意識しましょう。</p>
+    </details>
+  </main>
+
+  <!-- 固定ナビゲーションボタン -->
+  <footer>
+    <button class="nav-btn" id="prevBtn" onclick="prevQuestion()">前の質問</button>
+    <button class="nav-btn primary" id="nextBtn" onclick="nextQuestion()">次の質問</button>
+  </footer>
+
+  <script>
+    // 問題データ定義
+    const questionsData = [
+      // 第1部：転職理由
+      {
+        id: 1,
+        category: 1,
+        categoryName: "第1部：転職理由",
+        question: "なぜ防衛省を辞めて、転職しようと思ったのですか？",
+        answer: "防衛省では土木職として5年間、関係者との調整業務を中心に経験してきました。その経験を通じて培った調整力を今後も生かしながら、地域住民の生活により身近な公共空間の整備や維持管理に携わりたいと考え、転職を志望しました。",
+        point: "退職への不満ではなく、今後実現したい仕事を中心に話す。"
+      },
+      {
+        id: 2,
+        category: 1,
+        categoryName: "第1部：転職理由",
+        question: "なぜ土木職ではなく、造園職なのですか？",
+        answer: "土木技術の基礎や調整業務の経験を生かしながら、緑や公園など、住民が日常的に利用する空間づくりに携わりたいと考えたからです。利用する方々の視点も大切にしながら、地域に貢献していきたいです。",
+        point: "造園に関心を持った具体的なきっかけを、自分の経験から補う。"
+      },
+      {
+        id: 3,
+        category: 1,
+        categoryName: "第1部：転職理由",
+        question: "防衛省での仕事を続ける選択肢はなかったのですか？",
+        answer: "防衛省での経験から学んだことは多く、これまでの仕事を否定しているわけではありません。一方、今後のキャリアを考えたときに、住民の生活により身近な環境づくりに長く携わりたいという思いが強くなり、転職を決意しました。",
+        point: "前職への敬意を示しつつ、転職の意思を明確にする。"
+      },
+      {
+        id: 4,
+        category: 1,
+        categoryName: "第1部：転職理由",
+        question: "これまでの経験のうち、転職後も生かせるものは何ですか？",
+        answer: "最も生かせるのは、関係者間の調整力です。立場や条件が異なる相手の意見を整理し、課題や優先順位を明確にして、業務を前に進めることを意識してきました。造園の業務でも、庁内の関係部署や施工業者、地域住民などとの調整に生かしたいと考えています。",
+        point: "実際にどのように調整したのか、具体的な経験を加える。"
+      },
+      {
+        id: 5,
+        category: 1,
+        categoryName: "第1部：転職理由",
+        question: "なぜ今、転職するのですか？",
+        answer: "これまで5年間の実務を通じて、関係者との調整や公共の仕事の進め方を学んできました。今後のキャリアを考えたときに、これまで培った経験を別の行政分野で生かし、専門性を深めていきたいと考え、受験しました。",
+        point: "今のタイミングで決断した理由を、自分の言葉で説明する。"
+      },
+      // 第2部：志望動機・区政理解
+      {
+        id: 6,
+        category: 2,
+        categoryName: "第2部：志望動機・区政理解",
+        question: "なぜ特別区の中でも江戸川区なのですか？",
+        answer: "造園職として、区民の生活に身近な公園や緑地の整備・維持管理に携わりたいと考えています。江戸川区の緑化や公園に関する施策を理解し、地域の特性や住民のニーズに応じた環境づくりに取り組みたいと考え、志望しました。",
+        point: "江戸川区の具体的な施策を調べ、その施策に関心を持った理由を加える。"
+      },
+      {
+        id: 7,
+        category: 2,
+        categoryName: "第2部：志望動機・区政理解",
+        question: "江戸川区の造園職として、何を実現したいですか？",
+        answer: "安全で利用しやすい公園や緑地を維持しながら、幅広い世代が日常的に利用したいと思える環境づくりに貢献したいです。利用者の意見や現場の状況を把握し、関係部署や事業者と調整しながら、実現可能な改善につなげたいと考えています。",
+        point: "公園の利用、安全性、維持管理など、具体的な観点を示す。"
+      },
+      {
+        id: 8,
+        category: 2,
+        categoryName: "第2部：志望動機・区政理解",
+        question: "江戸川区の造園行政について、どのような課題があると考えますか？",
+        answer: "公園や緑地は整備するだけでなく、安全性を確保しながら、利用者のニーズに応じて維持管理していくことが重要だと考えています。限られた予算や人員の中で、利用状況や施設の状態を踏まえて優先順位をつけ、関係者と調整しながら改善していく必要があると思います。",
+        point: "江戸川区の公式資料を確認し、実際の施策や課題に即して回答を修正する。確認していない課題を、区の事実として断定しない。"
+      },
+      {
+        id: 9,
+        category: 2,
+        categoryName: "第2部：志望動機・区政理解",
+        question: "造園の専門知識が不足している部分は、どう補いますか？",
+        answer: "これまでの土木業務で培った調整力や業務遂行力を生かしつつ、造園特有の知識については、関連法令や樹木・植栽、公園施設の維持管理などを継続的に学びます。また、経験のある職員や専門業者から学び、現場で確認しながら、着実に知識と実務能力を身につけたいと考えています。",
+        point: "すでに持っている能力と、これから習得する能力を分けて説明する。"
+      },
+      {
+        id: 10,
+        category: 2,
+        categoryName: "第2部：志望動機・区政理解",
+        question: "採用後、どのような職員になりたいですか？",
+        answer: "技術的な条件を理解するだけでなく、関係者それぞれの立場や要望を整理し、実現可能な解決策につなげられる職員になりたいです。まずは造園職として必要な知識と現場経験を積み、将来的には周囲から安心して相談してもらえる職員を目指します。",
+        point: "学ぶ姿勢と、長期的に貢献したい意思を伝える。"
+      },
+      // 第3部：調整業務の経験・実務対応力
+      {
+        id: 11,
+        category: 3,
+        categoryName: "第3部：調整業務・実務対応力",
+        question: "これまでの仕事で、最も苦労した調整業務について教えてください。",
+        answer: "関係者によって優先したい条件や考え方が異なる中で、業務を前に進めることに苦労しました。その際は、まずそれぞれの要望と制約条件を整理し、共通する目的を確認したうえで、対応できることと難しいことを明確にし、解決策を探るようにしていました。",
+        point: "実際の案件について、①状況、②対立点、③自分の行動、④結果、の順で説明できるようにする。具体的な実績は捏造しない。"
+      },
+      {
+        id: 12,
+        category: 3,
+        categoryName: "第3部：調整業務・実務対応力",
+        question: "意見が対立したとき、どのように対応しますか？",
+        answer: "まず、それぞれの意見の背景や譲れない条件を把握します。そのうえで、目的や事実関係を共有し、安全性や期限などの優先条件を明確にして、複数の選択肢を検討します。自分だけで判断できない場合は、上司に相談しながら合意形成を進めます。",
+        point: "条件整理、選択肢の提示、必要な報告・相談を具体的に説明する。"
+      },
+      {
+        id: 13,
+        category: 3,
+        categoryName: "第3部：調整業務・実務対応力",
+        question: "調整に時間がかかり、期限に間に合わない可能性がある場合はどうしますか？",
+        answer: "まず、期限と遅延による影響を確認し、決定が必要な事項と未解決の事項を整理します。関係者には早めに状況と選択肢を共有し、必要に応じて上司に報告・相談します。品質や安全性を損なわずに、優先順位を明確にして対応します。",
+        point: "早期報告、影響の把握、選択肢の提示をセットで話す。"
+      },
+      {
+        id: 14,
+        category: 3,
+        categoryName: "第3部：調整業務・実務対応力",
+        question: "区民と施工業者の要望が食い違った場合、どう対応しますか？",
+        answer: "まず双方の要望を丁寧に聞き、背景と具体的な課題を把握します。そのうえで、安全性、法令、予算、工期などの条件を確認し、可能な対応策を整理します。要望をそのまま受け入れるのではなく、根拠を説明しながら、実現可能な解決策を関係者と検討します。",
+        point: "傾聴と説明、公平性、技術的な条件を両立する。"
+      },
+      {
+        id: 15,
+        category: 3,
+        categoryName: "第3部：調整業務・実務対応力",
+        question: "あなたの弱みは何ですか？",
+        answer: "関係者との調整を丁寧に進めようとするあまり、確認に時間をかけすぎることがあります。そのため、期限や優先順位を意識し、早い段階で論点を整理して共有することを心がけています。",
+        point: "本人の実際の弱みに置き換え、改善のために実践していることを説明する。"
+      }
+    ];
+
+    // アプリの状態管理
+    let currentFilteredList = [...questionsData];
+    let currentIndex = 0;
+    let isAnswerVisible = false;
+
+    // 初期化
+    window.onload = function() {
+      updateQuestionDisplay();
+    };
+
+    // 質問表示更新
+    function updateQuestionDisplay() {
+      const q = currentFilteredList[currentIndex];
+      
+      document.getElementById('categoryTag').innerText = q.categoryName;
+      document.getElementById('counterText').innerText = `質問 ${currentIndex + 1} / ${currentFilteredList.length}`;
+      document.getElementById('questionNumber').innerText = `質問 ${q.id}`;
+      document.getElementById('questionText').innerText = q.question;
+      document.getElementById('answerText').innerText = q.answer;
+      document.getElementById('pointText').innerText = q.point;
+
+      // 回答初期化（非表示）
+      isAnswerVisible = false;
+      document.getElementById('answerContainer').classList.remove('visible');
+      document.getElementById('toggleAnswerBtn').innerText = '回答例を表示';
+
+      // ボタン活性／非活性
+      document.getElementById('prevBtn').disabled = (currentIndex === 0);
+      document.getElementById('nextBtn').disabled = (currentIndex === currentFilteredList.length - 1);
+    }
+
+    // 回答の表示切替
+    function toggleAnswer() {
+      isAnswerVisible = !isAnswerVisible;
+      const container = document.getElementById('answerContainer');
+      const btn = document.getElementById('toggleAnswerBtn');
+
+      if (isAnswerVisible) {
+        container.classList.add('visible');
+        btn.innerText = '回答例を隠す';
+      } else {
+        container.classList.remove('visible');
+        btn.innerText = '回答例を表示';
+      }
+    }
+
+    // 次の質問
+    function nextQuestion() {
+      if (currentIndex < currentFilteredList.length - 1) {
+        currentIndex++;
+        updateQuestionDisplay();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // 前の質問
+    function prevQuestion() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateQuestionDisplay();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // カテゴリ変更
+    function onCategoryChange() {
+      const selectedCategory = document.getElementById('categorySelect').value;
+      const isRandom = document.getElementById('randomToggle').checked;
+
+      if (selectedCategory === 'all') {
+        currentFilteredList = [...questionsData];
+      } else {
+        const catNum = parseInt(selectedCategory);
+        currentFilteredList = questionsData.filter(q => q.category === catNum);
+      }
+
+      if (isRandom) {
+        shuffleArray(currentFilteredList);
+      }
+
+      currentIndex = 0;
+      updateQuestionDisplay();
+    }
+
+    // ランダムモード切替
+    function onRandomToggle() {
+      onCategoryChange(); // フィルタとシャッフルを再適用
+    }
+
+    // 配列シャッフル関数
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+  </script>
+</body>
+</html>
